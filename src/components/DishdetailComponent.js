@@ -3,11 +3,12 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 
 class DishDetail extends Component {
 
-  constructor(props) {
-      super(props);
+  componentDidMount() {
+    console.log('Dishdetail Component componentDidMount invoked')
+  }
 
-      this.state = {
-      }
+  componentDidUpdate() {
+    console.log('Dishdetail Component componentDidUpdate invoked')
   }
 
   renderDish(dish) {
@@ -29,12 +30,12 @@ class DishDetail extends Component {
       );
   }
 
-  renderComments(dish) {
-    if (dish != null)
+  renderComments(comments) {
+    if (comments != null)
       return(
         <div className="col-12 col-md-5 m-1">
           <h4>Comments</h4>
-            {dish.comments.map(comment => {
+            {comments.map(comment => {
               return (
                 <div key={comment.id}>
                   <ul className="list-unstyled">
@@ -53,20 +54,28 @@ class DishDetail extends Component {
         </div>
       );
     else  
-      return(
+      return (
         <div></div>
       );
   }
 
   render() {
-    return (
-      <div class="container">
-        <div className="row">
-          {this.renderDish(this.props.dish)}
-          {this.renderComments(this.props.dish)}
+
+    console.log('Dishdetail Component render invoked')
+
+    if (this.props.dish != null)
+      return (
+        <div class="container">
+          <div className="row">
+            {this.renderDish(this.props.dish)}
+            {this.renderComments(this.props.dish.comments)}
+          </div>
         </div>
-      </div>
-    );
+      );
+    else 
+        return (
+          <div></div>
+        )
   }
 }
 

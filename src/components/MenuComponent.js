@@ -3,9 +3,14 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 
 class Menu extends Component {
 
-  constructor(props) {
-      super(props);
+  componentDidMount() {
+    console.log('Menu Component componentDidMount invoked')
   }
+
+  componentDidUpdate() {
+    console.log('Menu Component componentDidUpdate invoked')
+  }
+
 
   render() {  
       const menu = this.props.dishes.map((dish) => {
@@ -22,6 +27,7 @@ class Menu extends Component {
           
       });
 
+      console.log('Menu Component render invoked')
 
       return (
           <div className="container">
